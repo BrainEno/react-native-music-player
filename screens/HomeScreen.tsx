@@ -1,18 +1,22 @@
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
-import Album from '../components/Album/Album';
+import { StyleSheet, View,FlatList } from 'react-native';
+import {AlbumCategory} from '../components/AlbumCategory/AlbumCategory'
+import { albumCategories} from '../data/albumCategories'
 
 
-const album={
-  id:"1",
-  imageUri:"https://i.scdn.co/image/ab67616d00001e02714cbbc918bd85ce00d34bef",
-  artistHeadline:"Double Heads: Legendary Live, Yaneura Shibuya, Tokyo, 1980-1981"
-}
 
 export default function HomeScreen() {
   return (
   <View style={styles.container}>
-  <Album album={album}  />
+    <FlatList
+    data={albumCategories}
+    renderItem={({item})=><AlbumCategory title={item.title}
+    albums={item.albums}
+   />}
+   keyExtractor={item=>item.id}
+  
+    />
+  
   </View>
   
   );

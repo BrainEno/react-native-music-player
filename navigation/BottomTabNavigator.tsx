@@ -6,7 +6,8 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import HomeScreen from '../screens/HomeScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, HomeParamList, TabTwoParamList } from '../types';
+import {AlbumScreen} from '../screens/AlbumScreen'
+import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -20,7 +21,7 @@ export default function BottomTabNavigator() {
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
         name="首页"
-        component={HomeNavigator}
+        component={TabOneNavigator}
         options={{
           tabBarIcon: ({ color }) => <Entypo name="home" size={30} style={{marginBottom:-3}} color={color}/>,
         }}
@@ -43,32 +44,32 @@ export default function BottomTabNavigator() {
         name="我的"
         component={TabTwoNavigator}
         options={{
-          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="view-dashboard-outline" size={30} style={{marginBottom:-3}} color={color} />,
+          tabBarIcon: ({color}) => <MaterialCommunityIcons name="view-dashboard-outline" size={30} style={{marginBottom:-3}} color={color} />,
         }}
       />
     </BottomTab.Navigator>
   );
 }
 
-// You can explore the built-in icon families and icons on the web at:
-// https://icons.expo.fyi/
-function TabBarIcon(props: { name: string; color: string }) {
-  return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
-}
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const HomeStack = createStackNavigator<HomeParamList>();
+const TabOneStack = createStackNavigator<TabOneParamList>();
 
-function HomeNavigator() {
+function TabOneNavigator() {
   return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen
+    <TabOneStack.Navigator>
+      <TabOneStack.Screen
         name="HomeScreen"
         component={HomeScreen}
         options={{ headerTitle: '首页' }}
       />
-    </HomeStack.Navigator>
+      <TabOneStack.Screen
+        name="AlbumScreen"
+        component={AlbumScreen}
+        options={{ headerTitle: '专辑' }}
+      />
+    </TabOneStack.Navigator>
   );
 }
 
