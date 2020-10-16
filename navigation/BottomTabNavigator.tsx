@@ -8,6 +8,7 @@ import HomeScreen from '../screens/HomeScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import {AlbumScreen} from '../screens/AlbumScreen'
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import { SeachScreen } from '../screens/SeachScreen';
 
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -17,7 +18,7 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="首页"
+      initialRouteName="Home"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
         name="首页"
@@ -79,8 +80,8 @@ function TabTwoNavigator() {
   return (
     <TabTwoStack.Navigator>
       <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
+        name="SearchScreen"
+        component={SeachScreen}
         options={{ headerTitle: 'Tab Two Title' }}
       />
     </TabTwoStack.Navigator>

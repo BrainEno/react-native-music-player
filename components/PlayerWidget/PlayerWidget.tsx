@@ -5,7 +5,8 @@ import {AntDesign,FontAwesome} from '@expo/vector-icons';
 import { Sound } from 'expo-av/build/Audio';
 import {AppContext} from "../../AppContext";
 import {GET_SONG} from '../../src/getSong';
-import { useLazyQuery, useQuery } from '@apollo/client';
+import {useLazyQuery1} from '../../src/useLazyQuery1';
+
 
 export const PlayerWidget: React.FC = () => {
     const [sound,setSound]=useState<Sound|null>(null);
@@ -14,16 +15,28 @@ export const PlayerWidget: React.FC = () => {
     const [position,setPosition]=useState<number|null>(null);
     const [song,setSong]=useState(null);
     const {songId} = useContext(AppContext);
-    const variablesRef = useRef({});
-    const [shouldExcute,exCuteQuery]=useState(false);
-    const {loading,data}=useQuery(GET_SONG,{variables:variablesRef.current,skip:!shouldExcute});
 
-    useEffect(()=>{
-      variablesRef.current={id:songId}
-      exCuteQuery(true)
-      
-     console.log(data)
-    },[songId])
+const [runQuery,{loading,data}]=useLazyQuery1(GET_SONG,{
+  onCompleted:()=>{
+    console.log(data)
+    setSong(data.song)
+  }
+})
+
+useEffect(() => {
+ const fetchSong= async ()=>{
+   try{
+     const data = await runQuery({id:songId})
+   }catch(e){
+     console.log(e);
+   }
+ }
+ fetchSong();
+}, [songId])
+
+
+
+
 
     const onPlaybackStatusUpdate=(status:any)=>{
       console.log(status)
@@ -81,7 +94,7 @@ export const PlayerWidget: React.FC = () => {
               <Image source={{uri:song.imageUri}} style={styles.image}/>
               <View style={styles.rightContainer}>
                 <View style={styles.nameContainer}>
-        <Text style={styles.title}>{songId}{song.title.length>25?(song.title.slice(0,25)+"..."):(song.title)}</Text>
+        <Text style={styles.title}>{song.title.length>25?(song.title.slice(0,25)+"..."):(song.title)}</Text>
                   <Text style={styles.artist}>{song.artist}</Text>
                 </View>
                 <View style={styles.iconsContainer}>

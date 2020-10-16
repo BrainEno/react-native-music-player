@@ -1,7 +1,6 @@
 import React,{useEffect} from 'react';
 import { StyleSheet, View,FlatList, Text } from 'react-native';
 import {AlbumCategory} from '../components/AlbumCategory/AlbumCategory'
-import { albumCategories} from '../data/albumCategories'
 import {useQuery} from '@apollo/client';
 import {LIST_CATEGORIES} from '../src/listAlbumCategories'
 
