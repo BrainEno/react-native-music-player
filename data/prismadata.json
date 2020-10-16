@@ -1,0 +1,30 @@
+{
+  "data": {
+    "albumCategories": [
+      {
+        "id": "ckga7e96r009y0702vfe01hnf",
+        "title": "Garage",
+        "album": [
+          {
+            "id": "ckga7gy9m00at0702rwzfg9f0",
+            "imageUri": "http://www.pngplay.com/wp-content/uploads/1/CD-PNG-HD-Photo.png",
+            "ArtistHeadline": "Dub",
+            "name": "Together Forever"
+          }
+        ]
+      },
+      {
+        "id": "ckga8wp8y00ys070281be7hfp",
+        "title": "Hip-Pop",
+        "album": [
+          {
+            "id": "ckga91wjt010007022odwfs4x",
+            "imageUri": "https://i1.sndcdn.com/avatars-000578882946-45pucp-t500x500.jpg",
+            "ArtistHeadline": "The Mean Machine",
+            "name": "Disco Dream"
+          }
+        ]
+      }
+    ]
+  }
+}

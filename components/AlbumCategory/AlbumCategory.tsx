@@ -12,6 +12,7 @@ interface AlbumCategoryProps {
 
 
 export const AlbumCategory: React.FC<AlbumCategoryProps> = ({title,albums}) => {
+  
         return (
             <View style={styles.container}>
                 <Text style={styles.title}>{title}</Text>
