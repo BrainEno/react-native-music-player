@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState, useRef} from 'react';
 import { Image, Text, View,TouchableOpacity } from 'react-native';
 import {styles} from './styles';
+import {Song} from '../../types';
 import {AntDesign,FontAwesome} from '@expo/vector-icons';
 import { Sound } from 'expo-av/build/Audio';
 import {AppContext} from "../../AppContext";
@@ -13,10 +14,10 @@ export const PlayerWidget: React.FC = () => {
     const [isPlaying,setIsPlaying]=useState<boolean>(false);
     const [duration,setDuration]=useState<number|null>(null);
     const [position,setPosition]=useState<number|null>(null);
-    const [song,setSong]=useState(null);
+    const [song,setSong]=useState<null|Song>(null);
     const {songId} = useContext(AppContext);
 
-const [runQuery,{loading,data}]=useLazyQuery1(GET_SONG,{
+const [runQuery,{data}]=useLazyQuery1(GET_SONG,{
   onCompleted:()=>{
     console.log(data)
     setSong(data.song)
@@ -33,9 +34,6 @@ useEffect(() => {
  }
  fetchSong();
 }, [songId])
-
-
-
 
 
     const onPlaybackStatusUpdate=(status:any)=>{
@@ -75,7 +73,7 @@ useEffect(() => {
       }
     }
 
-    //获取歌曲进度
+    //get the play progress
     const getProgress=()=>{
       if(sound===null || duration===null || position===null){
         return 0

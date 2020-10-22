@@ -4,32 +4,42 @@ export type RootStackParamList = {
 };
 
 export type BottomTabParamList = {
-  TabOne: undefined;
-  TabTwo: undefined;
+  首页: undefined;
+  探索: undefined;
+  乐库: undefined;
+  我的: undefined;
 };
 
 export type TabOneParamList = {
-  TabOneScreen: undefined;
-  AlbumScreen:undefined;
+  HomeScreen: undefined;
+  AlbumScreen: undefined;
 };
 
 export type TabTwoParamList = {
-  TabTwoScreen: undefined;
+  SearchScreen: undefined;
 };
 
-export type Album ={
-  id:string;
-  imageUri:string;
-  artistHeadline:string;
-  name: string,
-  by: string,
-  numberOfLikes: number,
-  }
+export type TabThreeParamList = {
+  LibraryScreen: undefined;
+};
+
+export type TabFourParamList = {
+  PremiumScreen: undefined;
+};
+
+export type Album = {
+  id: string;
+  imageUri: string;
+  artistHeadline: string;
+  name: string;
+  by: string;
+  numberOfLikes: number;
+};
 
 export type Song = {
-  id:string;
-  imageUri:string;
-  title:string;
-  artist:string;
-
-}
+  id: string;
+  imageUri: string;
+  title: string;
+  artist: string;
+  uri: string;
+};

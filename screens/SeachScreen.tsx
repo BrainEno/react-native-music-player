@@ -1,6 +1,7 @@
 import React from 'react';
-import { View,Text,TextInput,StyleSheet } from 'react-native';
+import { View,Text,TextInput,StyleSheet,FlatList } from 'react-native';
 import { EvilIcons } from '@expo/vector-icons';
+
 
 interface SeachScreenProps {
 
@@ -11,9 +12,9 @@ export const SeachScreen: React.FC<SeachScreenProps> = ({}) => {
             <View style={styles.container}>
                 <Text style={styles.text}>检索</Text>
                 <View style={styles.searchContainer}>
-                    
                     <EvilIcons name="search" size={30} style={{marginBottom:-3}}/>
-                    <TextInput placeholder="搜索歌曲" style={styles.textInput}/>
+                    <TextInput placeholder="输入音乐人、歌曲，或专辑" style={styles.textInput}/>
+                   
                 </View>    
             </View>
         );
@@ -40,6 +41,8 @@ text:{
     fontSize:40
 },
 textInput:{
-    borderColor:"#737373"
+    borderColor:"#737373",
+    flex:1,
+    height:"100%"
 }
 })

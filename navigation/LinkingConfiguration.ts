@@ -13,17 +13,17 @@ export default {
           },
           TabTwo: {
             screens: {
-              TabTwoScreen: "two",
+              SearchScreen: "two",
             },
           },
           TabThree: {
             screens: {
-              TabTwoScreen: "three",
+              LibaryScreen: "three",
             },
           },
           TabFour: {
             screens: {
-              TabTwoScreen: "four",
+              PremuimScreen: "four",
             },
           },
         },
